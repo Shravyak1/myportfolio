@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shravya Kanigala — AI/ML Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#0d1b2a;--deep:#1a2d45;--accent:#4fc3f7;--accent2:#7c83fd;--gold:#f0c56e;--text:#e8edf2;--muted:#8ea3b8;--card:rgba(255,255,255,0.04);--border:rgba(79,195,247,0.15);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0.5;transition:width 0.2s,height 0.2s;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(79,195,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,0.04) 1px,transparent 1px);background-size:60px 60px;z-index:0;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(13,27,42,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--accent);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(--accent);}
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 4rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(124,131,253,0.12) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 20% 70%,rgba(79,195,247,0.08) 0%,transparent 60%);}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;border:1px solid var(--border);border-radius:100px;padding:0.4rem 1.2rem;margin-bottom:2rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);animation:fadeUp 0.8s ease forwards;}
+.hero-tag span{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:900;line-height:0.95;background:linear-gradient(135deg,#fff 0%,var(--accent) 50%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp 0.9s 0.1s ease forwards;opacity:0;letter-spacing:-0.02em;}
+.hero-title{font-size:1.1rem;color:var(--muted);margin-top:1.2rem;font-weight:300;letter-spacing:0.08em;animation:fadeUp 1s 0.25s ease forwards;opacity:0;}
+.hero-desc{max-width:520px;margin-top:1.5rem;line-height:1.75;color:var(--muted);font-size:0.95rem;animation:fadeUp 1s 0.35s ease forwards;opacity:0;}
+.hero-cta{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;animation:fadeUp 1s 0.45s ease forwards;opacity:0;}
+.btn-primary{padding:0.85rem 2rem;background:var(--accent);color:var(--navy);border-radius:6px;font-weight:600;font-size:0.85rem;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;transition:transform 0.2s,box-shadow 0.2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(79,195,247,0.3);}
+.btn-outline{padding:0.85rem 2rem;border:1px solid var(--border);color:var(--text);border-radius:6px;font-weight:500;font-size:0.85rem;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.hero-stats{position:absolute;right:4rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2.5rem;z-index:2;animation:fadeLeft 1s 0.5s ease forwards;opacity:0;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.7rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.3rem;}
+section{position:relative;z-index:2;padding:6rem 4rem;max-width:1200px;margin:0 auto;}
+.section-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem;}
+.section-tag::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent);opacity:0.4;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3.5rem;}
+.about-visual{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;}
+.about-ring{width:280px;height:280px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;animation:spin 20s linear infinite;position:relative;}
+.about-ring::before{content:'';position:absolute;width:240px;height:240px;border-radius:50%;border:1px dashed rgba(79,195,247,0.2);animation:spin 15s linear infinite reverse;}
+.about-center{width:180px;height:180px;background:var(--deep);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--border);animation:spin 20s linear infinite reverse;font-family:'Playfair Display',serif;}
+.about-center .cgpa{font-size:2rem;font-weight:700;color:var(--accent);}
+.about-center .cgpa-label{font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;}
+.orbit-dot{position:absolute;width:8px;height:8px;background:var(--accent);border-radius:50%;top:0;left:50%;transform:translateX(-50%) translateY(-4px);box-shadow:0 0 12px var(--accent);}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.skills-chips{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;}
+.chip{padding:0.35rem 0.9rem;border:1px solid var(--border);border-radius:100px;font-size:0.75rem;color:var(--muted);font-family:'DM Mono',monospace;transition:border-color 0.2s,color 0.2s;}
+.chip:hover{border-color:var(--accent);color:var(--accent);}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3.5rem;}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,195,247,0.05) 0%,transparent 60%);opacity:0;transition:opacity 0.3s;}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.4);border-color:rgba(79,195,247,0.3);}
+.project-card:hover::before{opacity:1;}
+.project-num{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);opacity:0.6;margin-bottom:1rem;}
+.project-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;margin-bottom:0.8rem;line-height:1.3;}
+.project-desc{color:var(--muted);font-size:0.88rem;line-height:1.7;margin-bottom:1.5rem;}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.tag{padding:0.22rem 0.65rem;background:rgba(79,195,247,0.08);border:1px solid rgba(79,195,247,0.15);border-radius:4px;font-size:0.7rem;color:var(--accent);font-family:'DM Mono',monospace;}
+.project-accent{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;opacity:0.15;}
+.edu-timeline{margin-top:3.5rem;position:relative;}
+.edu-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border);}
+.edu-item{padding:0 0 2.5rem 3rem;position:relative;}
+.edu-item::before{content:'';position:absolute;left:-5px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(79,195,247,0.15);}
+.edu-period{font-family:'DM Mono',monospace;font-size:0.76rem;color:var(--accent);margin-bottom:0.5rem;}
+.edu-institution{font-size:1.1rem;font-weight:600;margin-bottom:0.3rem;}
+.edu-degree{color:var(--muted);font-size:0.88rem;}
+.edu-grade{display:inline-block;margin-top:0.6rem;padding:0.2rem 0.7rem;background:rgba(240,197,110,0.1);border:1px solid rgba(240,197,110,0.25);border-radius:4px;font-size:0.76rem;color:var(--gold);font-family:'DM Mono',monospace;}
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3.5rem;}
+.ach-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;}
+.ach-icon{font-size:2rem;margin-bottom:1rem;}
+.ach-title{font-weight:600;margin-bottom:0.6rem;font-size:1rem;}
+.ach-items{list-style:none;}
+.ach-items li{color:var(--muted);font-size:0.85rem;padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:flex-start;gap:0.6rem;}
+.ach-items li::before{content:'→';color:var(--accent);font-size:0.72rem;margin-top:2px;flex-shrink:0;}
+.contact-wrapper{margin-top:3.5rem;border:1px solid var(--border);border-radius:20px;padding:4rem;text-align:center;background:linear-gradient(135deg,rgba(79,195,247,0.05) 0%,rgba(124,131,253,0.05) 100%);}
+.contact-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;margin-bottom:1rem;}
+.contact-sub{color:var(--muted);margin-bottom:2.5rem;}
+.contact-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.contact-link{display:flex;align-items:center;gap:0.7rem;padding:0.9rem 1.8rem;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:border-color 0.2s,background 0.2s;}
+.contact-link:hover{border-color:var(--accent);background:rgba(79,195,247,0.06);}
+.link-label{font-size:0.83rem;}
+.link-value{font-size:0.75rem;color:var(--muted);font-family:'DM Mono',monospace;}
+footer{text-align:center;padding:2rem;color:var(--muted);font-size:0.76rem;border-top:1px solid var(--border);position:relative;z-index:2;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translate(30px,-50%)}to{opacity:1;transform:translate(0,-50%)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){nav{padding:1rem 1.5rem;}.hero{padding:5rem 1.5rem 3rem;}.hero-stats{display:none;}section{padding:4rem 1.5rem;}.about-grid{grid-template-columns:1fr;gap:2rem;}.contact-wrapper{padding:2.5rem 1.5rem;}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="ring"></div>
+<nav>
+  <div class="nav-logo">SK</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span></span> Available for Internships & Collaborations</div>
+    <h1 class="hero-name">Shravya<br>Kanigala</h1>
+    <p class="hero-title">AI/ML Engineer &nbsp;·&nbsp; Full-Stack Developer &nbsp;·&nbsp; Problem Solver</p>
+    <p class="hero-desc">Building intelligent, scalable applications at the intersection of Artificial Intelligence, Machine Learning, and thoughtful software engineering.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">8.9</div><div class="stat-label">CGPA</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Hackathons</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Certs</div></div>
+  </div>
+</div>
+<section id="about">
+  <div class="section-tag reveal">About Me</div>
+  <h2 class="section-title reveal">Passionate about AI &<br>Intelligent Systems</h2>
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-ring">
+        <div class="orbit-dot"></div>
+        <div class="about-center"><div class="cgpa">8.9</div><div class="cgpa-label">CGPA</div></div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <p>I'm a 3rd-year B.E. student specializing in Artificial Intelligence & Machine Learning at Global Academy of Technology, Bangalore. I'm deeply passionate about building end-to-end intelligent systems that solve real-world problems.</p>
+      <p>My work spans computer vision, NLP, and web development — from multilingual OCR systems to fraud detection tools. I love participating in hackathons and constantly pushing my limits.</p>
+      <div class="skills-chips">
+        <span class="chip">Python</span><span class="chip">CNN / RNN</span><span class="chip">OpenCV</span><span class="chip">Flask</span><span class="chip">Kivy</span><span class="chip">Pytesseract</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">HTML / CSS</span><span class="chip">DSA</span><span class="chip">Prompt Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="projects">
+  <div class="section-tag reveal">Portfolio</div>
+  <h2 class="section-title reveal">Featured Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-accent">🔍</div>
+      <div class="project-num">01 / OCR + Vision</div>
+      <h3 class="project-title">Multilingual OCR Image Search in Gallery</h3>
+      <p class="project-desc">A mobile app that intelligently fetches images from your phone gallery by typing or speaking a keyword — supporting 5 Indian languages with near-perfect accuracy using CNN and RNN models with Pytesseract OCR.</p>
+      <div class="project-tags"><span class="tag">CNN</span><span class="tag">RNN</span><span class="tag">Pytesseract</span><span class="tag">Kivy</span><span class="tag">Python</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-accent">📞</div>
+      <div class="project-num">02 / Cybersecurity + ML</div>
+      <h3 class="project-title">Fraud Call Detection System</h3>
+      <p class="project-desc">A web-based platform that detects and flags scam/fraudulent calls in real time using audio signal analysis and machine learning pattern recognition, focused on protecting users from cybercrime.</p>
+      <div class="project-tags"><span class="tag">ML</span><span class="tag">Audio Analysis</span><span class="tag">Python</span><span class="tag">Web App</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-accent">📚</div>
+      <div class="project-num">03 / Full-Stack Web</div>
+      <h3 class="project-title">Library Management System</h3>
+      <p class="project-desc">A Flask-based web application with role-based authentication for students and librarians, featuring automated book issue/return workflows and intelligent fine calculation for overdue returns.</p>
+      <div class="project-tags"><span class="tag">Flask</span><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Role-Based Auth</span></div>
+    </div>
+  </div>
+</section>
+<section id="education">
+  <div class="section-tag reveal">Academic Journey</div>
+  <h2 class="section-title reveal">Education</h2>
+  <div class="edu-timeline">
+    <div class="edu-item reveal">
+      <div class="edu-period">2023 — Present</div>
+      <div class="edu-institution">Global Academy of Technology, Bangalore</div>
+      <div class="edu-degree">B.E. in Artificial Intelligence & Machine Learning</div>
+      <span class="edu-grade">CGPA: 8.9</span>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-period">2021 — 2023</div>
+      <div class="edu-institution">RNS PU College</div>
+      <div class="edu-degree">Pre-University — Physics, Chemistry, Mathematics, Biology</div>
+      <span class="edu-grade">92%</span>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-period">2010 — 2021</div>
+      <div class="edu-institution">Prarthana Central School</div>
+      <div class="edu-degree">SSLC (Class 10)</div>
+      <span class="edu-grade">92%</span>
+    </div>
+  </div>
+</section>
+<section id="achievements">
+  <div class="section-tag reveal">Recognition</div>
+  <h2 class="section-title reveal">Achievements</h2>
+  <div class="ach-grid">
+    <div class="ach-card reveal">
+      <div class="ach-icon">🏆</div>
+      <div class="ach-title">Certifications</div>
+      <ul class="ach-items">
+        <li>AI Certification — Infosys Springboard</li>
+        <li>Python Certification — Infosys Springboard</li>
+        <li>IBM Data Science — Coursera</li>
+      </ul>
+    </div>
+    <div class="ach-card reveal">
+      <div class="ach-icon">⚡</div>
+      <div class="ach-title">Hackathons (5 Participated)</div>
+      <ul class="ach-items">
+        <li>Google Cloud Agentic AI Day — Hack2Skill</li>
+        <li>ISRO Bharathiya Antariksha Hackathon</li>
+        <li>Xcelerate 24hr — Bangalore Univ. of Tech.</li>
+        <li>Argonyx 24hr — RV University</li>
+        <li>Hack-A-League — Global Academy of Tech.</li>
+      </ul>
+    </div>
+    <div class="ach-card reveal">
+      <div class="ach-icon">🎤</div>
+      <div class="ach-title">Cultural & Volunteering</div>
+      <ul class="ach-items">
+        <li>Singing events & flash mobs</li>
+        <li>Run for Hunger Marathon volunteer</li>
+        <li>VTU 25 Years Fest volunteer</li>
+      </ul>
+      <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <div class="ach-title" style="margin-bottom:0.5rem;">Hobbies</div>
+        <div style="color:var(--muted);font-size:0.87rem;">Singing &nbsp;·&nbsp; Chess &nbsp;·&nbsp; Drawing &nbsp;·&nbsp; Dance</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="contact-wrapper reveal">
+    <h2 class="contact-title">Let's Build Something Together</h2>
+    <p class="contact-sub">Open to internships, collaborations, and exciting AI/ML projects.</p>
+    <div class="contact-links">
+      <a href="mailto:kanigalashravya@gmail.com" class="contact-link"><span>✉</span><div><div class="link-label">Email</div><div class="link-value">kanigalashravya@gmail.com</div></div></a>
+      <a href="tel:+918618333851" class="contact-link"><span>📞</span><div><div class="link-label">Phone</div><div class="link-value">+91-8618333851</div></div></a>
+      <a href="#" class="contact-link"><span>💼</span><div><div class="link-label">LinkedIn</div><div class="link-value">Shravya Kanigala</div></div></a>
+      <a href="#" class="contact-link"><span>📍</span><div><div class="link-label">Location</div><div class="link-value">Bangalore, India</div></div></a>
+    </div>
+  </div>
+</section>
+<footer><p>Designed & crafted with ♥ — Shravya Kanigala © 2026</p></footer>
+<script>
+const cursor=document.getElementById('cursor'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2)';ring.style.width='56px';ring.style.height='56px';});
+  el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';ring.style.width='36px';ring.style.height='36px';});
+});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*100);});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
